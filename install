@@ -1,4 +1,8 @@
 #!/bin/bash
 
 # Build docker image
-docker build -q=true -t luxifer/redis github.com/musicglue/dokku-redis-dockerfiles
+if docker images | grep 'luxifer/redis'; then
+    :
+else
+    docker build -q=true -t luxifer/redis github.com/musicglue/dokku-redis-dockerfiles
+fi
